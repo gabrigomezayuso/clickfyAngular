@@ -1,0 +1,109 @@
+<section class="sec1">
+  <div class="container">
+    <div class="headerText text-center">
+      <h2>Eventos</h2>
+      </div>
+      <div class="row">
+
+
+          <div class="col-md-6 col-lg-4" *ngFor="let event of events">
+            <div class="card text-center" style="width: 20rem;">
+              <img class="card-img-top" src="{{event.imagenEvento}}" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">{{event.nombreEvento}}</h5>
+                <p class="card-text">{{event.descripcionEvento}}</p>
+                <p class="text-muted card-text">{{event.ubicacionEvento}}</p>
+                <p class="text-muted card-text"> Contacto: {{event.contactoEvento}}</p>
+                <a href="#" class="btn btn-dark">Reservar espacio</a>
+              </div>
+            </div>
+            <br>
+          </div>
+
+
+      </div>
+  </div>
+</section>
+
+<div class="main-container">
+  <h2>¿Que accion desea realizar?</h2>
+  <div class="radio-buttons">
+      <label class="custom-radio">
+          <input type="radio" name="radio" value="add" (click)="elegirAccion($event)">
+          <span class="radio-btn"><i class="fas fa-check"></i>
+              <div class="options-icon">
+                <i class="fas fa-plus"></i>
+                  <h3>Añadir Evento</h3>
+              </div>
+          </span>
+      </label>
+      <label class="custom-radio">
+          <input type="radio" name="radio" value="edit" (click)="elegirAccion($event)">
+          <span class="radio-btn"><i class="fas fa-check"></i>
+              <div class="options-icon">
+                  <i class="fas fa-edit"></i>
+                  <h3>Editar Evento</h3>
+              </div>
+          </span>
+      </label>
+      <label class="custom-radio">
+          <input type="radio" name="radio" value="delete" (click)="elegirAccion($event)">
+          <span class="radio-btn"><i class="fas fa-check"></i>
+              <div class="options-icon">
+                 <i class="fas fa-trash"></i>
+                  <h3>Eliminar Evento</h3>
+              </div>
+          </span>
+      </label>
+  </div>
+</div>
+
+<section class="sec1">
+
+
+  <div class="container-add" *ngIf="container === 'add'">
+    <h1>{{accion}}</h1>
+    <form class="cf">
+      <div class="half left cf">
+        <input type="text" id="input-name" #evento placeholder="Evento">
+        <input type="text" id="input-subject" #ubicacion placeholder="Ubicación">
+        <input type="email" id="input-email" #email placeholder="Email">
+        <label><input type="checkbox" id="input-check" #check>Aceptar Condiciones</label>
+      </div>
+      <div class="half right cf">
+        <textarea name="message" type="text" #descrip id="input-message" placeholder="Descripción"></textarea>
+        <input type="text" id="input-imagen" #imagen placeholder="Imagen">
+      </div>
+      <input type="button" (click)="enviarDatosAdd(evento.value, ubicacion.value, email.value, descrip.value, imagen.value, check.value)" value="Añadir" id="input-submit">
+    </form>
+  </div>
+
+  <div class="container-edit" *ngIf="container === 'edit'">
+    <form class="cf">
+      <div class="half left cf">
+        <input type="text" id="input-name" #evento placeholder="Evento2">
+        <input type="text" id="input-subject" #ubicacion placeholder="Ubicación2">
+        <input type="email" id="input-email" #email placeholder="Email2">
+      </div>
+      <div class="half right cf">
+        <textarea name="message" type="text" #descrip id="input-message" placeholder="Descripción2"></textarea>
+      </div>
+      <input type="button" value="Editar" id="input-submit">
+    </form>
+  </div>
+
+  <div class="container-delete" *ngIf="container === 'delete'">
+    <form class="cf">
+      <div class="half left cf">
+        <input type="text" id="input-name" #evento placeholder="Evento3">
+      </div>
+      <input type="button" value="Eliminar" id="input-submit">
+    </form>
+  </div>
+
+</section>
+
+
+
+
+
