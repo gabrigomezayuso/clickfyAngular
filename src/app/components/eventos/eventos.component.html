@@ -3,32 +3,77 @@
     <div class="headerText text-center">
       <h2>Eventos</h2>
       </div>
-      <div class="row">
 
 
-          <div class="col-md-6 col-lg-4" *ngFor="let event of events">
-            <div class="card text-center" style="width: 20rem;">
-              <img class="card-img-top" src="{{event.imagenEvento}}" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">{{event.nombreEvento}}</h5>
-                <p class="card-text">{{event.descripcionEvento}}</p>
-                <p class="text-muted card-text">{{event.ubicacionEvento}}</p>
-                <p class="text-muted card-text"> Contacto: {{event.contactoEvento}}</p>
-                <a href="#" class="btn btn-dark">Reservar espacio</a>
+
+
+
+          <div class="" *ngFor="let event of events">
+              <div class="vertical-center">
+                <div class="placeBox"  data-toggle="modal" data-target="#evento">
+                  <div class="imgBox">
+                    <img
+                      src="{{event.imagenEvento}}"
+                      class="img-fluid"
+                      alt=""
+                    />
+                  </div>
+                  <div class="content">
+                    <h3>{{event.nombreEvento}}</h3>
+                  </div>
+
               </div>
-            </div>
-            <br>
+              <div class="modal fade" id="evento" tabindex="-1" role="dialog" aria-labelledby="evento" aria-hidden="true">
+                <br>
+                <br>
+                <br>
+                <br>
+                 <div class="modal-dialog" role="document">
+                   <div class="modal-content">
+                     <div class="modal-header">
+                       <h5 class="modal-title" id="exampleModalLabel">{{event.nombreEvento}}</h5>
+                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                         <span aria-hidden="true">&times;</span>
+                       </button>
+                     </div>
+                     <div class="modal-body">
+                      <p class="card-text text-dark">{{event.descripcionEvento}}</p>
+                      <p class="text-muted card-text">{{event.ubicacionEvento}}</p>
+                      <p class="text-muted card-text"> Contacto: {{event.contactoEvento}}</p>
+                      <a href="#" class="btn btn-dark">Reservar espacio</a>                     </div>
+                     <div class="modal-footer">
+                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+
           </div>
 
 
       </div>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </section>
 
-<div class="main-container">
+<div class="container">
   <h2>¿Que accion desea realizar?</h2>
   <div class="radio-buttons">
-      <label class="custom-radio">
+      <label class="radio">
           <input type="radio" name="radio" value="add" (click)="elegirAccion($event)">
           <span class="radio-btn"><i class="fas fa-check"></i>
               <div class="options-icon">
@@ -61,7 +106,7 @@
 <section class="sec1">
 
 
-  <div class="container-add" *ngIf="container === 'add'">
+  <div class="container" *ngIf="container === 'add'">
     <h1>{{accion}}</h1>
     <form class="cf">
       <div class="half left cf">
@@ -78,7 +123,7 @@
     </form>
   </div>
 
-  <div class="container-edit" *ngIf="container === 'edit'">
+  <div class="container" *ngIf="container === 'edit'">
     <form class="cf">
       <div class="half left cf">
         <input type="text" id="input-name" #evento placeholder="Evento2">
@@ -92,7 +137,7 @@
     </form>
   </div>
 
-  <div class="container-delete" *ngIf="container === 'delete'">
+  <div class="container" *ngIf="container === 'delete'">
     <form class="cf">
       <div class="half left cf">
         <input type="text" id="input-name" #evento placeholder="Evento3">
