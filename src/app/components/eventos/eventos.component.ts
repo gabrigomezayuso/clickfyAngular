@@ -20,6 +20,16 @@ export class EventosComponent implements OnInit {
   public ubicacion: string;
   public contacto: string;
 
+  mostrarError: string = "";
+  mostrarError2: string = "";
+  mostrarError3: string = "";
+  mostrarError4: string = "";
+  mostrarError5: string = "";
+  mostrarError6: string = "";
+  mailPatt = '^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$ ';
+
+
+
   constructor() { }
 
   ngOnInit(): void {
@@ -31,22 +41,32 @@ export class EventosComponent implements OnInit {
   elegirAccion(event) {
     console.log(event.target.value);
     if(event.target.value == "add") {
-      this.accion = "AÑADIR EVENTO";
       this.container = "add"
     } else if(event.target.value == "edit") {
-      this.accion = "EDITAR EVENTO";
       this.container = "edit"
     } else if (event.target.value == "delete") {
       this.container = "delete"
-      this.accion = "ELIMINAR EVENTO";
     } else {
       this.accion = "";
     }
   }
 
-  enviarDatosAdd(event, descripcion, di, me, ubicacion, mail, acuerdo) {
+  enviarDatosAdd(event, descripcion, di, me, ubicacion, mail, check) {
 
-    console.log(acuerdo);
+    if(event.length==0){
+      this.mostrarError="Introduzca un nombre para el evento";
+    }
+
+    if(descripcion.length<3){
+      this.mostrarError2="El texto introducido es demasiado corto";
+    }
+
+
+    if(!mail.match(this.mailPatt)){
+      this.mostrarError3 = "El correo introducido no es valido";
+    }
+
+
     if((event && ubicacion && mail && descripcion)){
       this.events.push(new EventGallery(event, descripcion, di, me, ubicacion, mail ));
     }

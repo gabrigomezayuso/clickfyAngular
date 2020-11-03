@@ -61,16 +61,25 @@
 
 <section class="sec1">
 
-
   <div class="container" *ngIf="container === 'add'">
+
+
+
+
+  </div>
+
+
+  <div class="container" *ngIf="container === 'edit'">
     <div class="App">
       <div class="vertical-center">
           <div class="inner-block">
               <form>
-                  <h3>Registrar evento</h3>
+                  <h3>Editar evento</h3>
                   <div class="form-group">
                       <label>Nombre del evento</label>
-                      <input type="text" class="form-control" #evento name="evento"  />
+                      <select name="name" class="form-control">
+                        <option value="{{event.nombreEvento}}"  #evento *ngFor="let event of events" >{{event.nombreEvento}}</option>
+                      </select>
                   </div>
 
                   <div class="form-group">
@@ -79,40 +88,41 @@
                   </div>
 
                   <div class="form-group">
-                      <label>Dia</label>
-                      <select name="dia" class="form-control" #dia >
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">16</option>
-                        <option value="17">17</option>
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                        <option value="21">21</option>
-                        <option value="22">22</option>
-                        <option value="23">23</option>
-                        <option value="24">24</option>
-                        <option value="25">25</option>
-                        <option value="26">26</option>
-                        <option value="27">27</option>
-                        <option value="28">28</option>
-                        <option value="29">29</option>
-                        <option value="30">30</option>
-                        <option value="31">31</option>
-                      </select>
-                  </div>
+                    <label>Dia</label>
+                    <select name="dia" class="form-control" #dia >
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                      <option value="13">13</option>
+                      <option value="14">14</option>
+                      <option value="15">16</option>
+                      <option value="17">17</option>
+                      <option value="18">18</option>
+                      <option value="19">19</option>
+                      <option value="20">20</option>
+                      <option value="21">21</option>
+                      <option value="22">22</option>
+                      <option value="23">23</option>
+                      <option value="24">24</option>
+                      <option value="25">25</option>
+                      <option value="26">26</option>
+                      <option value="27">27</option>
+                      <option value="28">28</option>
+                      <option value="29">29</option>
+                      <option value="30">30</option>
+                      <option value="31">31</option>
+                    </select>
+                </div>
+
 
                   <div class="form-group">
                     <label>Mes</label>
@@ -143,7 +153,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label><input type="checkbox" id="input-check" #check>Aceptar Condiciones</label>
+                    <label><input type="checkbox" #check >Aceptar condiciones del contrato</label>
                 </div>
 
                   <button type="button" (click)="enviarDatosAdd(evento.value, descrip.value, dia.value, mes.value, ubicacion.value, email.value, check.value)" value="Añadir"name="submit" id="submit" class="btn btn-outline-info btn-lg btn-block">Registrar evento</button>
@@ -151,29 +161,31 @@
           </div>
       </div>
   </div>
-  </div>
 
-  <div class="container" *ngIf="container === 'edit'">
-    <form class="cf">
-      <div class="half left cf">
-        <input type="text" id="input-name" #evento placeholder="Evento2">
-        <input type="text" id="input-subject" #ubicacion placeholder="Ubicación2">
-        <input type="email" id="input-email" #email placeholder="Email2">
-      </div>
-      <div class="half right cf">
-        <textarea name="message" type="text" #descrip id="input-message" placeholder="Descripción2"></textarea>
-      </div>
-      <input type="button" value="Editar" id="input-submit">
-    </form>
+
+
   </div>
 
   <div class="container" *ngIf="container === 'delete'">
-    <form class="cf">
-      <div class="half left cf">
-        <input type="text" id="input-name" #evento placeholder="Evento3">
+    <div class="App">
+      <div class="vertical-center">
+          <div class="inner-block">
+              <form>
+                  <h3>Borrar evento</h3>
+                  <div class="form-group">
+                      <label>Nombre del evento</label>
+                      <select name="name" class="form-control">
+                        <option value="{{event.nombreEvento}}"  #evento *ngFor="let event of events" >{{event.nombreEvento}}</option>
+                      </select>
+                  </div>
+
+                  <button type="button" (click)="enviarDatosAdd(evento.value, descrip.value, dia.value, mes.value, ubicacion.value, email.value, check.value)" value="Añadir"name="submit" id="submit" class="btn btn-outline-info btn-lg btn-block">Borrar evento</button>
+              </form>
+          </div>
       </div>
-      <input type="button" value="Eliminar" id="input-submit">
-    </form>
+  </div>
+
+
   </div>
 
 

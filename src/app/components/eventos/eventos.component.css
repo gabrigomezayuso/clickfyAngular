@@ -311,8 +311,7 @@ transform: scale(1.09);
 
 .card{
   border-radius: 20px;
-  width: 70%;
-
+  margin: 5%;
 }
 .card-img-top{
   -webkit-border-top-left-radius: 20px;

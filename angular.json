@@ -33,7 +33,7 @@
               "src/app/components/header/trans.js",
               "node_modules/bootstrap/dist/js/bootstrap.bundle.js"
             ]
- },
+          },
           "configurations": {
             "production": {
               "fileReplacements": [
@@ -125,6 +125,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "clickfy"
+    }
+  },
+  "defaultProject": "clickfy",
+  "cli": {
+    "analytics": false
+  }
 }
