@@ -14,17 +14,18 @@ export class EventosComponent implements OnInit {
   public container: string;
 
   public evento: string;
+  public descripcion: string;
+  public dia: string;
+  public mes: string;
   public ubicacion: string;
   public contacto: string;
-  public descripcion: string;
-  public imagen: string;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.events.push(new EventGallery('MEGAFARRA UNIVERSITARIA', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis soluta odit aliquam neque? Dignissimos, blanditiis.', 'https://i.imgur.com/NCyAPxu.png', 'Lit Lleida', '647 278 200'));
-    this.events.push(new EventGallery('ETE SEECH', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis soluta odit aliquam neque? Dignissimos, blanditiis.', 'https://i.imgur.com/DQBI39k.png', 'Lit Lleida', '647 278 200'));
-    this.events.push(new EventGallery('Reggaeton Classics', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis soluta odit aliquam neque? Dignissimos, blanditiis.', 'https://i.imgur.com/UbjxyUE.png', 'Lit Lleida', '647 278 200'));
+    this.events.push(new EventGallery('MEGAFARRA UNIVERSITARIA', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis soluta odit aliquam neque? Dignissimos, blanditiis.', '6', 'Oct',  'Lit Lleida', 'ggomezayuso@gmail.com'));
+    this.events.push(new EventGallery('ETE SEECH', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis soluta odit aliquam neque? Dignissimos, blanditiis.', '10', 'Oct',  'Lit Lleida', '647 278 200'));
+    this.events.push(new EventGallery('Reggaeton Classics', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis soluta odit aliquam neque? Dignissimos, blanditiis.', '12', 'Oct',  'Lit Lleida', '647 278 200'));
     }
 
   elegirAccion(event) {
@@ -43,11 +44,11 @@ export class EventosComponent implements OnInit {
     }
   }
 
-  enviarDatosAdd(event, descripcion, img, ubicacion, contacto, acuerdo) {
+  enviarDatosAdd(event, descripcion, di, me, ubicacion, mail, acuerdo) {
 
     console.log(acuerdo);
-    if((event && ubicacion && contacto && descripcion)){
-      this.events.push(new EventGallery(event, descripcion, img, ubicacion, contacto ));
+    if((event && ubicacion && mail && descripcion)){
+      this.events.push(new EventGallery(event, descripcion, di, me, ubicacion, mail ));
     }
 
   }

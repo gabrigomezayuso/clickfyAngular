@@ -286,7 +286,7 @@ border-bottom-left-radius: 20px;
 }
 
 .inner-block {
-width: 350px;
+width: 50%;
 margin: auto;
 box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
 padding: 40px 55px 45px 55px;
@@ -309,9 +309,6 @@ box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
 transform: scale(1.09);
 }
 
-h3{
-text-align: center;
-}
 .card{
   border-radius: 20px;
   width: 70%;
@@ -324,4 +321,19 @@ text-align: center;
 -moz-border-radius-topright: 20px;
 border-top-left-radius: 20px;
 border-top-right-radius: 20px;
+}
+
+.evet-card > .card .list-inline-item {
+  color: #24e2ff;
+  font-size: 14px;
+}
+.evet-card > .card .badge {
+  background: #24e2ff;
+}
+.evet-card > .card {
+  background: #003c46;
+}
+
+h2 {
+  text-align: center;
 }
