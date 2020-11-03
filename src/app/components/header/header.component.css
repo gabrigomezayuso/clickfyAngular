@@ -34,6 +34,7 @@ p {
 .navbar-light .navbar-nav .show > .nav-link {
   color: #000;
   background: #fff;
+  border-radius: 20px;
 }
 
 .navbar-light .navbar-nav .active > .nav-link:hover,
@@ -41,6 +42,7 @@ p {
 .navbar-light .navbar-nav .nav-link.show:hover,
 .navbar-light .navbar-nav .show > .nav-link:hover {
   color: #000;
+
 }
 
 .navbar-light .navbar-nav .active > .nav-link:hover {
