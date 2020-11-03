@@ -336,3 +336,11 @@ border-top-right-radius: 20px;
 h2 {
   text-align: center;
 }
+
+label{
+  font-weight: bolder;
+
+}
+.redF{
+  color: red;
+}

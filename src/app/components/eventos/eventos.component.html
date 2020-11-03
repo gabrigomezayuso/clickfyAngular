@@ -70,12 +70,24 @@
                   <div class="form-group">
                       <label>Nombre del evento</label>
                       <input type="text" class="form-control" #evento name="evento"  />
-                  </div>
+
+                      <div [ngSwitch]="mostrarError">
+                        <div *ngSwitchCase="'Introduzca un nombre para el evento'" class="redF">Introduzca un nombre para el evento</div>
+                    </div>
+
+
+
+                    </div>
 
                   <div class="form-group">
                       <label>Descripcion del evento</label>
                       <textarea type="text" class="form-control" #descrip name="descrip" ></textarea>
-                  </div>
+
+                      <div [ngSwitch]="mostrarError2">
+                        <div *ngSwitchCase="'El texto introducido es demasiado corto'" class="redF">El texto introducido es demasiado corto</div>
+                    </div>
+
+                    </div>
 
                   <div class="form-group">
                       <label>Dia</label>
@@ -139,7 +151,10 @@
                   <div class="form-group">
                       <label>Correo</label>
                       <input type="email" class="form-control" name="email" #email/>
-                  </div>
+                      <div [ngSwitch]="mostrarError3">
+                        <div *ngSwitchCase="'El correo introducido no es valido'" class="redF">El correo introducido no es valido</div>
+                    </div>
+                    </div>
 
                   <div class="form-group">
                     <label><input type="checkbox" id="input-check" #check>Aceptar Condiciones</label>
