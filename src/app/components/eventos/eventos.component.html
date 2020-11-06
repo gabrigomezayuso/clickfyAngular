@@ -3,7 +3,7 @@
     <div class="headerText text-center">
       <h2>Eventos</h2>
       </div>
-          <div class="" *ngFor="let event of events">
+          <div class="" *ngFor="let event of eventos">
             <div class="col-md-12">
               <div class="card-group evet-card text-light mb-2">
                 <div class="card mb-0">
@@ -19,7 +19,7 @@
                       </div>
                       <div class="col-7 col-sm-9">
                         <div class="d-flex flex-column">
-                          <h3 class="card-title text-uppercase mt-0">
+                          <h3 class="card-title mt-0">
                             <strong>{{event.nombreEvento}}</strong>
                           </h3>
                           <div class="card-text">
@@ -73,10 +73,7 @@
 
                       <div [ngSwitch]="mostrarError">
                         <div *ngSwitchCase="'Introduzca un nombre para el evento'" class="redF">Introduzca un nombre para el evento</div>
-                    </div>
-
-
-
+                      </div>
                     </div>
 
                   <div class="form-group">
@@ -160,7 +157,7 @@
                     <label><input type="checkbox" id="input-check" #check>Aceptar Condiciones</label>
                 </div>
 
-                  <button type="button" (click)="enviarDatosAdd(evento.value, descrip.value, dia.value, mes.value, ubicacion.value, email.value, check.value)" value="Añadir"name="submit" id="submit" class="btn btn-outline-info btn-lg btn-block">Registrar evento</button>
+                  <button type="button" (click)="anadirEventos(evento.value, descrip.value, dia.value, mes.value, ubicacion.value, email.value, check.value)" value="Añadir"name="submit" id="submit" class="btn btn-outline-info btn-lg btn-block">Registrar evento</button>
               </form>
           </div>
         </div>
@@ -177,52 +174,58 @@
                   <h3>Editar evento</h3>
                   <div class="form-group">
                       <label>Nombre del evento</label>
-                      <select name="name" class="form-control">
-                        <option value="{{event.nombreEvento}}"  #evento *ngFor="let event of events" >{{event.nombreEvento}}</option>
-                      </select>
-                  </div>
+                      <input type="text" class="form-control" #evento name="evento"  />
+
+                      <div [ngSwitch]="mostrarError">
+                        <div *ngSwitchCase="'Introduzca un nombre para el evento'" class="redF">Introduzca un nombre para el evento</div>
+                      </div>
+                    </div>
 
                   <div class="form-group">
                       <label>Descripcion del evento</label>
                       <textarea type="text" class="form-control" #descrip name="descrip" ></textarea>
-                  </div>
+
+                      <div [ngSwitch]="mostrarError2">
+                        <div *ngSwitchCase="'El texto introducido es demasiado corto'" class="redF">El texto introducido es demasiado corto</div>
+                    </div>
+
+                    </div>
 
                   <div class="form-group">
-                    <label>Dia</label>
-                    <select name="dia" class="form-control" #dia >
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                      <option value="6">6</option>
-                      <option value="7">7</option>
-                      <option value="8">8</option>
-                      <option value="9">9</option>
-                      <option value="10">10</option>
-                      <option value="11">11</option>
-                      <option value="12">12</option>
-                      <option value="13">13</option>
-                      <option value="14">14</option>
-                      <option value="15">16</option>
-                      <option value="17">17</option>
-                      <option value="18">18</option>
-                      <option value="19">19</option>
-                      <option value="20">20</option>
-                      <option value="21">21</option>
-                      <option value="22">22</option>
-                      <option value="23">23</option>
-                      <option value="24">24</option>
-                      <option value="25">25</option>
-                      <option value="26">26</option>
-                      <option value="27">27</option>
-                      <option value="28">28</option>
-                      <option value="29">29</option>
-                      <option value="30">30</option>
-                      <option value="31">31</option>
-                    </select>
-                </div>
-
+                      <label>Dia</label>
+                      <select name="dia" class="form-control" #dia >
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                      </select>
+                  </div>
 
                   <div class="form-group">
                     <label>Mes</label>
@@ -250,21 +253,23 @@
                   <div class="form-group">
                       <label>Correo</label>
                       <input type="email" class="form-control" name="email" #email/>
-                  </div>
+                      <div [ngSwitch]="mostrarError3">
+                        <div *ngSwitchCase="'El correo introducido no es valido'" class="redF">El correo introducido no es valido</div>
+                    </div>
+                    </div>
 
-                  <div class="form-group">
-                    <label><input type="checkbox" #check >Aceptar condiciones del contrato</label>
-                </div>
 
-                  <button type="button" (click)="enviarDatosAdd(evento.value, descrip.value, dia.value, mes.value, ubicacion.value, email.value, check.value)" value="Añadir"name="submit" id="submit" class="btn btn-outline-info btn-lg btn-block">Registrar evento</button>
+
+                  <button type="button" (click)="editarEventos(evento.value, descrip.value, dia.value, mes.value, ubicacion.value, email.value)" value="Añadir"name="submit" id="submit" class="btn btn-outline-info btn-lg btn-block">Registrar evento</button>
               </form>
           </div>
+        </div>
       </div>
-  </div>
-
-
 
   </div>
+
+
+
 
   <div class="container" *ngIf="container === 'delete'">
     <div class="App">
@@ -273,13 +278,16 @@
               <form>
                   <h3>Borrar evento</h3>
                   <div class="form-group">
-                      <label>Nombre del evento</label>
-                      <select name="name" class="form-control">
-                        <option value="{{event.nombreEvento}}"  #evento *ngFor="let event of events" >{{event.nombreEvento}}</option>
-                      </select>
+                    <label>Nombre del evento</label>
+                    <input type="text" class="form-control" #evento name="evento"  />
+
+                    <div [ngSwitch]="mostrarError">
+                      <div *ngSwitchCase="'Introduzca un nombre para el evento'" class="redF">Introduzca un nombre para el evento</div>
+                    </div>
                   </div>
 
-                  <button type="button" (click)="enviarDatosAdd(evento.value, descrip.value, dia.value, mes.value, ubicacion.value, email.value, check.value)" value="Añadir"name="submit" id="submit" class="btn btn-outline-info btn-lg btn-block">Borrar evento</button>
+
+                  <button type="button" (click)="borrarEvento(evento.value)" value="Añadir"name="submit" id="submit" class="btn btn-outline-info btn-lg btn-block">Borrar evento</button>
               </form>
           </div>
       </div>

@@ -1,4 +1,4 @@
-export class EventGallery {
+export class eventoObjeto {
 
   constructor(
     public nombreEvento: string,
