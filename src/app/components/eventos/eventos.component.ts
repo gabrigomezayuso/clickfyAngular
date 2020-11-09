@@ -77,7 +77,6 @@ export class EventosComponent implements OnInit {
               this.eventos.splice( x, 1 );
             }
           }
-
           this.eventos.push( new eventoObjeto(evento, descripcion, di, me, ubicacion, mail ));
         }
       }else{
