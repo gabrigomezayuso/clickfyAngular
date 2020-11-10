@@ -17,6 +17,7 @@ export class EditarEventoComponent  {
   public foto: string;
   public ubicacion: string;
   public contacto: string;
+  public autor: string;
 
   mostrarError: string = "";
   mostrarError2: string = "";
@@ -27,7 +28,7 @@ export class EditarEventoComponent  {
 
   mailPatt = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  editarEventos(Nevento, descrip, fechaE, urlfoto, ubi, mail) {
+  editarEventos(Nevento, descrip, fechaE, urlfoto, ubi, mail, nombres) {
 
     //recojemos la inmformacion y la guardamos
     this.evento = Nevento;
@@ -36,9 +37,10 @@ export class EditarEventoComponent  {
     this.foto = urlfoto;
     this.ubicacion = ubi;
     this.contacto = mail;
+    this.autor = nombres;
 
   //hacemos un push
-    this.emitirDatos.emit({nombreEvento: this.evento, descripcionEvento: this.descripcion, fecha: this.cuando, foto: this.foto, ubicacionEvento: this.ubicacion, contactoEvento: this.contacto });
+  this.emitirDatos.emit({nombreEvento: this.evento, descripcionEvento: this.descripcion, fecha: this.cuando, foto: this.foto, ubicacionEvento: this.ubicacion, contactoEvento: this.contacto, autorEvento: this.autor });
 
   }
 

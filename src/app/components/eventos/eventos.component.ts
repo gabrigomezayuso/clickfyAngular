@@ -23,9 +23,9 @@ export class EventosComponent implements OnInit {
 
   //insertamos eventos por defecto
   ngOnInit(): void {
-    this.eventos.push(new eventoObjeto('MEGAFARRA UNIVERSITARIA', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis soluta odit aliquam neque? Dignissimos, blanditiis.', '18-10-2020' , 'https://i.imgur.com/I1sd68W.png',  'Lit Lleida', 'ggomezayuso@gmail.com'));
-    this.eventos.push(new eventoObjeto('ETE SEECH', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis soluta odit aliquam neque? Dignissimos, blanditiis.', '19-10-2020', 'https://i.imgur.com/Ol4npJg.png',  'Lit Lleida', 'ggomezayuso@gmail.com'));
-    this.eventos.push(new eventoObjeto('Reggaeton Classics', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis soluta odit aliquam neque? Dignissimos, blanditiis.', '20-10-2020', 'https://i.imgur.com/P8eeThv.png',  'Lit Lleida', 'ggomezayuso@gmail.com'));
+    this.eventos.push(new eventoObjeto('MEGAFARRA UNIVERSITARIA', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis soluta odit aliquam neque? Dignissimos, blanditiis.', '18-10-2020' , 'https://i.imgur.com/I1sd68W.png',  'Lit Lleida', 'ggomezayuso@gmail.com', 'Gabriel Gómez'));
+    this.eventos.push(new eventoObjeto('ETE SEECH', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis soluta odit aliquam neque? Dignissimos, blanditiis.', '19-10-2020', 'https://i.imgur.com/Ol4npJg.png',  'Lit Lleida', 'ggomezayuso@gmail.com','Gabriel Gómez'));
+    this.eventos.push(new eventoObjeto('Reggaeton Classics', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis soluta odit aliquam neque? Dignissimos, blanditiis.', '20-10-2020', 'https://i.imgur.com/P8eeThv.png',  'Lit Lleida', 'ggomezayuso@gmail.com','Gabriel Gómez'));
     }
 
 
@@ -47,7 +47,7 @@ export class EventosComponent implements OnInit {
 
   //esta funcion llama el evento hijo (AltaEvento) el cual hace un push de la informacion
   anadirEvento(eventoHijo) {
-    this.eventos.push(new eventoObjeto(eventoHijo.nombreEvento , eventoHijo.descripcionEvento, eventoHijo.fecha, eventoHijo.foto, eventoHijo.ubicacionEvento, eventoHijo.contactoEvento));
+    this.eventos.push(new eventoObjeto(eventoHijo.nombreEvento , eventoHijo.descripcionEvento, eventoHijo.fecha, eventoHijo.foto, eventoHijo.ubicacionEvento, eventoHijo.contactoEvento, eventoHijo.autorEvento));
   }
 
 
@@ -59,7 +59,7 @@ export class EventosComponent implements OnInit {
           for(var x = 0; x<this.eventos.length; x++) {
             if(this.eventos[x].nombreEvento == eventoHijo.nombreEvento){
               this.eventos.splice( x, 1 );
-              this.eventos.push(new eventoObjeto(eventoHijo.nombreEvento , eventoHijo.descripcionEvento, eventoHijo.fecha, eventoHijo.foto, eventoHijo.ubicacionEvento, eventoHijo.contactoEvento));
+              this.eventos.push(new eventoObjeto(eventoHijo.nombreEvento , eventoHijo.descripcionEvento, eventoHijo.fecha, eventoHijo.foto, eventoHijo.ubicacionEvento, eventoHijo.contactoEvento, eventoHijo.autorEvento));
             }
         }
       }else{

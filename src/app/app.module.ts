@@ -10,6 +10,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AltaEventoComponent } from './components/alta-evento/alta-evento.component';
 import { EditarEventoComponent } from './components/editar-evento/editar-evento.component';
 import { BorrarEventosComponent } from './components/borrar-eventos/borrar-eventos.component';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { BorrarEventosComponent } from './components/borrar-eventos/borrar-event
     FooterComponent,
     AltaEventoComponent,
     EditarEventoComponent,
-    BorrarEventosComponent
+    BorrarEventosComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

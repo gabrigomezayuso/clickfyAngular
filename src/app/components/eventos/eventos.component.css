@@ -359,3 +359,8 @@ label{
   display: grid;
 
 }
+.eventos{
+  width: 60%;
+  margin: auto;
+  margin-bottom: 10%;
+}

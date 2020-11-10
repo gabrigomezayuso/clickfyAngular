@@ -4,15 +4,16 @@
       <h2>Eventos</h2>
       </div>
       <!-- hacemos un bucle para imprimir eventos -->
-          <div *ngFor="let event of eventos">
-            <div class="card">
-              <img src="{{event.foto}}" class="card-img-top" alt="...">
+          <div *ngFor="let pepe of eventos">
+            <div class="card eventos">
+              <img src="{{pepe.foto}}" class="card-img-top" alt="...">
               <div class="card-body">
-                <h5 class="card-title">{{event.nombreEvento}}</h5>
-                <p class="card-text text-muted">{{event.fecha}}</p>
-                <p class="card-text">{{event.descripcionEvento}}</p>
-                <p class="card-text">{{event.ubicacionEvento}}</p>
-                <p class="card-text">{{event.contactoEvento}}</p>
+                <p class="card-text text-muted">{{pepe.fecha}}</p>
+                <p class="card-text text-muted">{{pepe.autorEvento}}</p>
+                <h5 class="card-title">{{pepe.nombreEvento}}</h5>
+                <p class="card-text">{{pepe.descripcionEvento}}</p>
+                <p class="card-text">{{pepe.ubicacionEvento}}</p>
+                <p class="card-text">{{pepe.contactoEvento}}</p>
               </div>
             </div>
           </div>

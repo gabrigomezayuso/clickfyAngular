@@ -7,5 +7,6 @@ export class eventoObjeto {
     public foto: string,
     public ubicacionEvento: string,
     public contactoEvento: string,
+    public autorEvento: string,
   ){}
 }

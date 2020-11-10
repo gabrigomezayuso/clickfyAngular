@@ -44,7 +44,11 @@
                     <div *ngSwitchCase="'El correo introducido no es valido'" class="redF">El correo introducido no es valido</div>
                 </div>
                 </div>
-              <button type="button" (click)="editarEventos(evento.value, descrip.value, fecha.value, foto.value, ubicacion.value, email.value)" value="Añadir"name="submit" id="submit" class="btn btn-outline-info btn-lg btn-block">Editar evento</button>
+                <div class="form-group">
+                  <label>Autor (Nombre y apellidos</label>
+                  <input type="text" class="form-control" name="autor" #autor/>
+                </div>
+              <button type="button" (click)="editarEventos(evento.value, descrip.value, fecha.value, foto.value, ubicacion.value, email.value, autor.value)" value="Añadir"name="submit" id="submit" class="btn btn-outline-info btn-lg btn-block">Editar evento</button>
           </form>
       </div>
     </div>

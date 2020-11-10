@@ -17,6 +17,7 @@ export class AltaEventoComponent {
   public foto: string;
   public ubicacion: string;
   public contacto: string;
+  public autor: string;
 
   mostrarError: string = "";
   mostrarError2: string = "";
@@ -27,7 +28,7 @@ export class AltaEventoComponent {
 
   mailPatt = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  anadirEventos(Nevento, descrip, fechaE, urlfoto, ubi, mail, check) {
+  anadirEventos(Nevento, descrip, fechaE, urlfoto, ubi, mail, nombres, check) {
     //recojemos la inmformacion y la guardamos
 
     this.evento = Nevento;
@@ -36,6 +37,7 @@ export class AltaEventoComponent {
     this.foto = urlfoto;
     this.ubicacion = ubi;
     this.contacto = mail;
+    this.autor = nombres;
 
 //compribacion de errores i mostrado en el componente padre mediante
     if(Nevento.length==0){
@@ -47,7 +49,7 @@ export class AltaEventoComponent {
     }else if(!check.value){
       this.mostrarError4 = "Has de marcar el check";
     } if((Nevento && ubi && mail && fechaE && descrip && check)){
-      this.emitirDatos.emit({nombreEvento: this.evento, descripcionEvento: this.descripcion, fecha: this.cuando, foto: this.foto, ubicacionEvento: this.ubicacion, contactoEvento: this.contacto });
+      this.emitirDatos.emit({nombreEvento: this.evento, descripcionEvento: this.descripcion, fecha: this.cuando, foto: this.foto, ubicacionEvento: this.ubicacion, contactoEvento: this.contacto, autorEvento: this.autor });
     }
 
     }
