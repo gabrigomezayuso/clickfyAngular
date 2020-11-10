@@ -3,39 +3,16 @@
     <div class="headerText text-center">
       <h2>Eventos</h2>
       </div>
+      <!-- hacemos un bucle para imprimir eventos -->
           <div class="" *ngFor="let event of eventos">
-            <div class="col-md-12">
-              <div class="card-group evet-card text-light mb-2">
-                <div class="card mb-0">
-                  <div class="card-body py-1">
-                    <div class="row">
-                      <div class="col-5 col-sm-3">
-                        <div class="display-4 ">
-                          <span class="badge">{{event.dia}}</span>
-                        </div>
-                        <div class="display-4">
-                          {{event.mes}}
-                        </div>
-                      </div>
-                      <div class="col-7 col-sm-9">
-                        <div class="d-flex flex-column">
-                          <h3 class="card-title mt-0">
-                            <strong>{{event.nombreEvento}}</strong>
-                          </h3>
-                          <div class="card-text">
-                            {{event.descripcionEvento}}
-                           </div>
-                          <ul class="list-inline mt-auto">
-                            <li class="list-inline-item"> <strong>Ubicacion :</strong></li>
-                            <li class="list-inline-item"><i class="fas fa-user"></i>{{event.ubicacionEvento}}</li>
-                            <li class="list-inline-item"> <strong>Reserva :</strong></li>
-                            <li class="list-inline-item"><i class="fas fa-user"></i>{{event.contactoEvento}}</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+            <div class="card">
+              <img src="{{event.foto}}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{event.nombreEvento}}</h5>
+                <p class="card-text text-muted">{{event.fecha}}</p>
+                <p class="card-text">{{event.descripcionEvento}}</p>
+                <p class="card-text">{{event.ubicacionEvento}}</p>
+                <p class="card-text">{{event.contactoEvento}}</p>
               </div>
             </div>
           </div>
@@ -46,232 +23,21 @@
   <br>
   <h2>¿Que accion desea realizar?</h2>
   <br>
-  <div class="justify-content-center align-items-center ">
-      <label class="radio">
+  <div class="container ">
+          <!-- mostramos las diferetes opciones, y en caso de seleccionar una, el valor se envia al ts y muestra su opcion correspondiente -->
           <button type="button" name="button" value="add" (click)="elegirAccion($event)" class="btn btn-outline-info btn-lg btn-block">Registrar evento</button>
-      </label>
-      <label class="custom-radio">
           <button type="button" name="button" value="edit" (click)="elegirAccion($event)" class="btn btn-outline-info btn-lg btn-block">Editar evento</button>
-      </label>
-      <label class="custom-radio">
-        <button type="button" name="button" value="delete" (click)="elegirAccion($event)" class="btn btn-outline-info btn-lg btn-block">Borrar evento</button>
-      </label>
+          <button type="button" name="button" value="delete" (click)="elegirAccion($event)" class="btn btn-outline-info btn-lg btn-block">Borrar evento</button>
   </div>
 </div>
 
 <section class="sec1">
 
-  <div class="container" *ngIf="container === 'add'">
-    <div class="App">
-      <div class="vertical-center">
-          <div class="inner-block">
-              <form>
-                  <h3>Registrar evento</h3>
-                  <div class="form-group">
-                      <label>Nombre del evento</label>
-                      <input type="text" class="form-control" #evento name="evento"  />
+<app-alta-evento *ngIf="(container) === 'anadir'" (emitirDatos)="anadirEvento($event)"></app-alta-evento>
 
-                      <div [ngSwitch]="mostrarError">
-                        <div *ngSwitchCase="'Introduzca un nombre para el evento'" class="redF">Introduzca un nombre para el evento</div>
-                      </div>
-                    </div>
+<app-editar-evento *ngIf="(container) === 'editar'" (emitirDatos)="editarEventos($event)"></app-editar-evento>
 
-                  <div class="form-group">
-                      <label>Descripcion del evento</label>
-                      <textarea type="text" class="form-control" #descrip name="descrip" ></textarea>
-
-                      <div [ngSwitch]="mostrarError2">
-                        <div *ngSwitchCase="'El texto introducido es demasiado corto'" class="redF">El texto introducido es demasiado corto</div>
-                    </div>
-
-                    </div>
-
-                  <div class="form-group">
-                      <label>Dia</label>
-                      <select name="dia" class="form-control" #dia >
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">16</option>
-                        <option value="17">17</option>
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                        <option value="21">21</option>
-                        <option value="22">22</option>
-                        <option value="23">23</option>
-                        <option value="24">24</option>
-                        <option value="25">25</option>
-                        <option value="26">26</option>
-                        <option value="27">27</option>
-                        <option value="28">28</option>
-                        <option value="29">29</option>
-                        <option value="30">30</option>
-                        <option value="31">31</option>
-                      </select>
-                  </div>
-
-                  <div class="form-group">
-                    <label>Mes</label>
-                    <select name="mes" class="form-control" #mes >
-                      <option value="Ene">Ene</option>
-                      <option value="Feb">Feb</option>
-                      <option value="Mar">Mar</option>
-                      <option value="Abr">Abr</option>
-                      <option value="May">May</option>
-                      <option value="Jun">Jun</option>
-                      <option value="Jul">Jul</option>
-                      <option value="Ago">Ago</option>
-                      <option value="Set">Set</option>
-                      <option value="Oct">Oct</option>
-                      <option value="Nov">Nov</option>
-                      <option value="Dic">Dic</option>
-                    </select>
-                </div>
-
-                  <div class="form-group">
-                      <label>Ubicacion</label>
-                      <input type="text" class="form-control" name="ubicacion" #ubicacion/>
-                  </div>
-
-                  <div class="form-group">
-                      <label>Correo</label>
-                      <input type="email" class="form-control" name="email" #email/>
-                      <div [ngSwitch]="mostrarError3">
-                        <div *ngSwitchCase="'El correo introducido no es valido'" class="redF">El correo introducido no es valido</div>
-                    </div>
-                    </div>
-
-                  <div class="form-group">
-                    <label><input type="checkbox" id="input-check" #check>Aceptar Condiciones</label>
-                </div>
-
-                  <button type="button" (click)="anadirEventos(evento.value, descrip.value, dia.value, mes.value, ubicacion.value, email.value, check.value)" value="Añadir"name="submit" id="submit" class="btn btn-outline-info btn-lg btn-block">Registrar evento</button>
-              </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-  <div class="container" *ngIf="container === 'edit'">
-    <div class="App">
-      <div class="vertical-center">
-          <div class="inner-block">
-              <form>
-                  <h3>Editar evento</h3>
-                  <div class="form-group">
-                      <label>Nombre del evento</label>
-                      <input type="text" class="form-control" #evento name="evento"  />
-
-                      <div [ngSwitch]="mostrarError">
-                        <div *ngSwitchCase="'Introduzca un nombre para el evento'" class="redF">Introduzca un nombre para el evento</div>
-                      </div>
-                    </div>
-
-                  <div class="form-group">
-                      <label>Descripcion del evento</label>
-                      <textarea type="text" class="form-control" #descrip name="descrip" ></textarea>
-
-                      <div [ngSwitch]="mostrarError2">
-                        <div *ngSwitchCase="'El texto introducido es demasiado corto'" class="redF">El texto introducido es demasiado corto</div>
-                    </div>
-
-                    </div>
-
-                  <div class="form-group">
-                      <label>Dia</label>
-                      <select name="dia" class="form-control" #dia >
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        <option value="13">13</option>
-                        <option value="14">14</option>
-                        <option value="15">16</option>
-                        <option value="17">17</option>
-                        <option value="18">18</option>
-                        <option value="19">19</option>
-                        <option value="20">20</option>
-                        <option value="21">21</option>
-                        <option value="22">22</option>
-                        <option value="23">23</option>
-                        <option value="24">24</option>
-                        <option value="25">25</option>
-                        <option value="26">26</option>
-                        <option value="27">27</option>
-                        <option value="28">28</option>
-                        <option value="29">29</option>
-                        <option value="30">30</option>
-                        <option value="31">31</option>
-                      </select>
-                  </div>
-
-                  <div class="form-group">
-                    <label>Mes</label>
-                    <select name="mes" class="form-control" #mes >
-                      <option value="Ene">Ene</option>
-                      <option value="Feb">Feb</option>
-                      <option value="Mar">Mar</option>
-                      <option value="Abr">Abr</option>
-                      <option value="May">May</option>
-                      <option value="Jun">Jun</option>
-                      <option value="Jul">Jul</option>
-                      <option value="Ago">Ago</option>
-                      <option value="Set">Set</option>
-                      <option value="Oct">Oct</option>
-                      <option value="Nov">Nov</option>
-                      <option value="Dic">Dic</option>
-                    </select>
-                </div>
-
-                  <div class="form-group">
-                      <label>Ubicacion</label>
-                      <input type="text" class="form-control" name="ubicacion" #ubicacion/>
-                  </div>
-
-                  <div class="form-group">
-                      <label>Correo</label>
-                      <input type="email" class="form-control" name="email" #email/>
-                      <div [ngSwitch]="mostrarError3">
-                        <div *ngSwitchCase="'El correo introducido no es valido'" class="redF">El correo introducido no es valido</div>
-                    </div>
-                    </div>
-
-
-
-                  <button type="button" (click)="editarEventos(evento.value, descrip.value, dia.value, mes.value, ubicacion.value, email.value)" value="Añadir"name="submit" id="submit" class="btn btn-outline-info btn-lg btn-block">Registrar evento</button>
-              </form>
-          </div>
-        </div>
-      </div>
-
-  </div>
-
-
-
-
-  <div class="container" *ngIf="container === 'delete'">
+<div class="container" *ngIf="container === 'borrar'">
     <div class="App">
       <div class="vertical-center">
           <div class="inner-block">
@@ -285,8 +51,6 @@
                       <div *ngSwitchCase="'Introduzca un nombre para el evento'" class="redF">Introduzca un nombre para el evento</div>
                     </div>
                   </div>
-
-
                   <button type="button" (click)="borrarEvento(evento.value)" value="Añadir"name="submit" id="submit" class="btn btn-outline-info btn-lg btn-block">Borrar evento</button>
               </form>
           </div>
@@ -295,8 +59,6 @@
 
 
   </div>
-
-
 
 </section>
 

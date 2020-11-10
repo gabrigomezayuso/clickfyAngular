@@ -267,3 +267,8 @@ p {
     font-size: 1.5rem;
   }
 }
+.dropdown-item.active, .dropdown-item:active {
+  color: #fff;
+  text-decoration: none;
+  background-color: #24e2ff;
+}

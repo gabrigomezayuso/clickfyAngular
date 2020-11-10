@@ -1,0 +1,54 @@
+<div class="App">
+  <div class="vertical-center">
+      <div class="inner-block">
+          <form>
+              <h3>Editar evento</h3>
+              <div class="form-group">
+                  <label>Nombre del evento</label>
+                  <input type="text" class="form-control" #evento name="evento"  />
+
+                  <div [ngSwitch]="mostrarError">
+                    <div *ngSwitchCase="'Introduzca un nombre para el evento'" class="redF">Introduzca un nombre para el evento</div>
+                  </div>
+                </div>
+
+              <div class="form-group">
+                  <label>Descripcion del evento</label>
+                  <textarea type="text" class="form-control" #descrip name="descrip" ></textarea>
+
+                  <div [ngSwitch]="mostrarError2">
+                    <div *ngSwitchCase="'El texto introducido es demasiado corto'" class="redF">El texto introducido es demasiado corto</div>
+                </div>
+
+                </div>
+
+              <div class="form-group">
+                <label>Fecha</label>
+                <input type="date" #fecha class="form-control">
+              </div>
+
+              <div class="form-group">
+                <label>URL Imagen</label>
+                <input type="text" #foto class="form-control">
+            </div>
+
+              <div class="form-group">
+                  <label>Ubicacion</label>
+                  <input type="text" class="form-control" name="ubicacion" #ubicacion/>
+              </div>
+
+              <div class="form-group">
+                  <label>Correo</label>
+                  <input type="email" class="form-control" name="email" #email/>
+                  <div [ngSwitch]="mostrarError3">
+                    <div *ngSwitchCase="'El correo introducido no es valido'" class="redF">El correo introducido no es valido</div>
+                </div>
+                </div>
+
+
+
+              <button type="button" (click)="editarEventos(evento.value, descrip.value, fecha.value, foto.value, ubicacion.value, email.value)" value="Añadir"name="submit" id="submit" class="btn btn-outline-info btn-lg btn-block">Editar evento</button>
+          </form>
+      </div>
+    </div>
+  </div>

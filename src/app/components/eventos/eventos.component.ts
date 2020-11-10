@@ -2,106 +2,81 @@ import { Component, OnInit } from '@angular/core';
 import { eventoObjeto } from '../models/eventoObjeto';
 
 @Component({
-  selector: 'app-events',
+  selector: 'app-eventos',
   templateUrl: './eventos.component.html',
   styleUrls: ['./eventos.component.css']
 })
 export class EventosComponent implements OnInit {
 
+  //creamos los diefrentes varfiables que nos serviran tanto como parta importar de los hijos como para mostrar mensajes de rror
   eventos: eventoObjeto[] = [];
-  accion: String;
-
+  vacio:string;
   public container: string;
-
-  public evento: string;
-  public eventoEditar: string = "";
-  public descripcion: string;
-  public dia: string;
-  public mes: string;
-  public ubicacion: string;
-  public contacto: string;
-
   mostrarError: string = "";
   mostrarError2: string = "";
   mostrarError3: string = "";
-  mostrarError4: string = "";
-  mostrarError5: string = "";
-  mostrarError6: string = "";
   mailPatt = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 
 
   constructor() { }
 
+  //insertamos eventos por defecto
   ngOnInit(): void {
-    this.eventos.push(new eventoObjeto('MEGAFARRA UNIVERSITARIA', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis soluta odit aliquam neque? Dignissimos, blanditiis.', '6', 'Oct',  'Lit Lleida', 'ggomezayuso@gmail.com'));
-    this.eventos.push(new eventoObjeto('ETE SEECH', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis soluta odit aliquam neque? Dignissimos, blanditiis.', '10', 'Oct',  'Lit Lleida', '647 278 200'));
-    this.eventos.push(new eventoObjeto('Reggaeton Classics', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis soluta odit aliquam neque? Dignissimos, blanditiis.', '12', 'Oct',  'Lit Lleida', '647 278 200'));
+    this.eventos.push(new eventoObjeto('MEGAFARRA UNIVERSITARIA', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis soluta odit aliquam neque? Dignissimos, blanditiis.', '18-10-2020' , 'https://i.imgur.com/fiEprTR.jpg',  'Lit Lleida', 'ggomezayuso@gmail.com'));
+    this.eventos.push(new eventoObjeto('ETE SEECH', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis soluta odit aliquam neque? Dignissimos, blanditiis.', '19-10-2020', 'https://i.imgur.com/fdWI4uU.jpg',  'Lit Lleida', 'ggomezayuso@gmail.com'));
+    this.eventos.push(new eventoObjeto('Reggaeton Classics', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis soluta odit aliquam neque? Dignissimos, blanditiis.', '20-10-2020', 'https://i.imgur.com/iJ3barm.jpg',  'Lit Lleida', 'ggomezayuso@gmail.com'));
     }
 
-  elegirAccion(event) {
-    if(event.target.value == "add") {
-      this.container = "add"
-    } else if(event.target.value == "edit") {
-      this.container = "edit"
-    } else if (event.target.value == "delete") {
-      this.container = "delete"
+
+    //esta funcion lo que hace es mostrarnos iferentes contenedores de el componente Eventos dependiendo de su opcion seleccionada.
+  elegirAccion(accion) {
+    //en caso de que la accion sea "anadir"
+    if(accion.target.value == "anadir") {
+      //mostrara el contenido "anadir" y asi succesivamente
+      this.container = "anadir"
+    } else if(accion.target.value == "editar") {
+      this.container = "editar"
+    } else if (accion.target.value == "borrar") {
+      this.container = "borrar"
     } else {
-      this.accion = "";
+      //en caso de no ser ninguna de las 3, se mostrara un espacio vacio
+      this.vacio = "";
     }
   }
 
-  anadirEventos(evento, descripcion, di, me, ubicacion, mail, check) {
-    if(evento.length==0){
-      this.mostrarError="Introduzca un nombre para el evento";
-    } else if(descripcion.length<3){
-      this.mostrarError2="El texto introducido es demasiado corto";
-    }else if(!mail.match(this.mailPatt)){
-      this.mostrarError3 = "El correo introducido no es valido";
-    }else if(!check.value){
-      this.mostrarError4 = "Has de marcar el check";
-    }
-    if((evento && ubicacion && mail && descripcion && check)){
-      this.eventos.push(new eventoObjeto(evento, descripcion, di, me, ubicacion, mail ));
-    }
+  //esta funcion llama el evento hijo (AltaEvento) el cual hace un push de la informacion
+  anadirEvento(eventoHijo) {
+    this.eventos.push(new eventoObjeto(eventoHijo.nombreEvento , eventoHijo.descripcionEvento, eventoHijo.fecha, eventoHijo.foto, eventoHijo.ubicacionEvento, eventoHijo.contactoEvento));
   }
 
 
-  editarEventos(evento, descripcion, di, me, ubicacion, mail) {
 
+  //esta funcion llama el evento hijo (EdfitarEvento) el cual hace un push de la informacion y elimina el evento que se llama igual
+  editarEventos(eventoHijo) {
     for(var x = 0; x<this.eventos.length; x++) {
-      if(this.eventos[x].nombreEvento == evento){
-        if((evento && ubicacion && mail && descripcion)){
+      if(this.eventos[x].nombreEvento == eventoHijo.nombreEvento){
           for(var x = 0; x<this.eventos.length; x++) {
-            if(this.eventos[x].nombreEvento == evento){
+            if(this.eventos[x].nombreEvento == eventoHijo.nombreEvento){
               this.eventos.splice( x, 1 );
+              this.eventos.push(new eventoObjeto(eventoHijo.nombreEvento , eventoHijo.descripcionEvento, eventoHijo.fecha, eventoHijo.foto, eventoHijo.ubicacionEvento, eventoHijo.contactoEvento));
             }
-          }
-          this.eventos.push( new eventoObjeto(evento, descripcion, di, me, ubicacion, mail ));
         }
       }else{
-        if(evento.length==0){
+        if(eventoHijo.nombreEvento.length==0){
           this.mostrarError="Introduzca un nombre para el evento";
-        }else if(descripcion.length<3){
+        }else if(eventoHijo.descripcionEvento.length<3){
           this.mostrarError2="El texto introducido es demasiado corto";
-        }else if(!mail.match(this.mailPatt)){
+        }else if(!eventoHijo.contactoEvento.match(this.mailPatt)){
           this.mostrarError3 = "El correo introducido no es valido";
-        }
-
-        if( this.eventoEditar.length==0){
-          this.mostrarError="Introduzca un nombre de un evento";
         }
       }
     }
-
-
-
-
-
   }
 
 
-
+  //esta funcion borra al evento que se llame igual que el introducido por el usuario
+  //HABIA INTENTADO HACERLO EN OTRO COMPONENTE PERO ME FALLABA!
   borrarEvento(evento){
     for(var x = 0; x<this.eventos.length; x++) {
       if(this.eventos[x].nombreEvento == evento){
