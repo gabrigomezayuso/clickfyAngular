@@ -344,3 +344,18 @@ label{
 .redF{
   color: red;
 }
+.btn-outline-info {
+  color: #24e2ff;
+  border-color: #24e2ff;
+  margin: 3px;
+}
+
+  .btn-outline-info:hover {
+  color: #fff;
+  background-color: #24e2ff;
+}
+
+.opciones{
+  display: grid;
+
+}

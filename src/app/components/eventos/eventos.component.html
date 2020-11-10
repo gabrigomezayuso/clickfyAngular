@@ -1,10 +1,10 @@
-<section class="sec1">
+<section class="sec1" id="more">
   <div class="container">
     <div class="headerText text-center">
       <h2>Eventos</h2>
       </div>
       <!-- hacemos un bucle para imprimir eventos -->
-          <div class="" *ngFor="let event of eventos">
+          <div *ngFor="let event of eventos">
             <div class="card">
               <img src="{{event.foto}}" class="card-img-top" alt="...">
               <div class="card-body">
@@ -23,21 +23,21 @@
   <br>
   <h2>¿Que accion desea realizar?</h2>
   <br>
-  <div class="container ">
+  <div class="container opciones">
           <!-- mostramos las diferetes opciones, y en caso de seleccionar una, el valor se envia al ts y muestra su opcion correspondiente -->
-          <button type="button" name="button" value="add" (click)="elegirAccion($event)" class="btn btn-outline-info btn-lg btn-block">Registrar evento</button>
-          <button type="button" name="button" value="edit" (click)="elegirAccion($event)" class="btn btn-outline-info btn-lg btn-block">Editar evento</button>
-          <button type="button" name="button" value="delete" (click)="elegirAccion($event)" class="btn btn-outline-info btn-lg btn-block">Borrar evento</button>
+          <button type="button" name="button" value="anadir" (click)="elegirAccion($event)" class="btn btn-outline-info btn-lg ">Registrar evento</button>
+          <button type="button" name="button" value="editar" (click)="elegirAccion($event)" class="btn btn-outline-info btn-lg ">Editar evento</button>
+          <button type="button" name="button" value="borrar" (click)="elegirAccion($event)" class="btn btn-outline-info btn-lg ">Borrar evento</button>
   </div>
 </div>
 
 <section class="sec1">
 
-<app-alta-evento *ngIf="(container) === 'anadir'" (emitirDatos)="anadirEvento($event)"></app-alta-evento>
+<app-alta-evento *ngIf="(contenido) === 'anadir'" (emitirDatos)="anadirEvento($event)"></app-alta-evento>
 
-<app-editar-evento *ngIf="(container) === 'editar'" (emitirDatos)="editarEventos($event)"></app-editar-evento>
+<app-editar-evento *ngIf="(contenido) === 'editar'" (emitirDatos)="editarEventos($event)"></app-editar-evento>
 
-<div class="container" *ngIf="container === 'borrar'">
+<div class="container" *ngIf="contenido === 'borrar'">
     <div class="App">
       <div class="vertical-center">
           <div class="inner-block">

@@ -11,7 +11,7 @@ export class EventosComponent implements OnInit {
   //creamos los diefrentes varfiables que nos serviran tanto como parta importar de los hijos como para mostrar mensajes de rror
   eventos: eventoObjeto[] = [];
   vacio:string;
-  public container: string;
+  public contenido: string;
   mostrarError: string = "";
   mostrarError2: string = "";
   mostrarError3: string = "";
@@ -23,9 +23,9 @@ export class EventosComponent implements OnInit {
 
   //insertamos eventos por defecto
   ngOnInit(): void {
-    this.eventos.push(new eventoObjeto('MEGAFARRA UNIVERSITARIA', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis soluta odit aliquam neque? Dignissimos, blanditiis.', '18-10-2020' , 'https://i.imgur.com/fiEprTR.jpg',  'Lit Lleida', 'ggomezayuso@gmail.com'));
-    this.eventos.push(new eventoObjeto('ETE SEECH', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis soluta odit aliquam neque? Dignissimos, blanditiis.', '19-10-2020', 'https://i.imgur.com/fdWI4uU.jpg',  'Lit Lleida', 'ggomezayuso@gmail.com'));
-    this.eventos.push(new eventoObjeto('Reggaeton Classics', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis soluta odit aliquam neque? Dignissimos, blanditiis.', '20-10-2020', 'https://i.imgur.com/iJ3barm.jpg',  'Lit Lleida', 'ggomezayuso@gmail.com'));
+    this.eventos.push(new eventoObjeto('MEGAFARRA UNIVERSITARIA', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis soluta odit aliquam neque? Dignissimos, blanditiis.', '18-10-2020' , 'https://i.imgur.com/I1sd68W.png',  'Lit Lleida', 'ggomezayuso@gmail.com'));
+    this.eventos.push(new eventoObjeto('ETE SEECH', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis soluta odit aliquam neque? Dignissimos, blanditiis.', '19-10-2020', 'https://i.imgur.com/Ol4npJg.png',  'Lit Lleida', 'ggomezayuso@gmail.com'));
+    this.eventos.push(new eventoObjeto('Reggaeton Classics', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis soluta odit aliquam neque? Dignissimos, blanditiis.', '20-10-2020', 'https://i.imgur.com/P8eeThv.png',  'Lit Lleida', 'ggomezayuso@gmail.com'));
     }
 
 
@@ -34,11 +34,11 @@ export class EventosComponent implements OnInit {
     //en caso de que la accion sea "anadir"
     if(accion.target.value == "anadir") {
       //mostrara el contenido "anadir" y asi succesivamente
-      this.container = "anadir"
+      this.contenido = "anadir"
     } else if(accion.target.value == "editar") {
-      this.container = "editar"
+      this.contenido = "editar"
     } else if (accion.target.value == "borrar") {
-      this.container = "borrar"
+      this.contenido = "borrar"
     } else {
       //en caso de no ser ninguna de las 3, se mostrara un espacio vacio
       this.vacio = "";
